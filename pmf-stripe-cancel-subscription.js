@@ -2,8 +2,8 @@ var stripe = require('stripe@4.14.0');
 var R = require('ramda@0.23.0');
 
 module.exports = function(context, cb) {
-  if (!context.data.email) {
-    cb(null, {status: 401, message: 'Please provide an email address'})
+  if (!context.data.subscriptionId) {
+    cb(null, {status: 401, message: 'Please provide an subscriptionId'})
   }
   stripe(context.secrets.stripe_private_api_key).subscriptions.del(
     context.data.subscriptionId,
